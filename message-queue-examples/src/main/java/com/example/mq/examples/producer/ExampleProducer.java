@@ -22,7 +22,11 @@ public class ExampleProducer {
         return MessageResult.of(msg); // 方法体会被代理实现
     }
 
-    @Producer(type = MessageQueueType.ROCKETMQ, cluster = "primary", topic = "ai-test", delayTime = 5000, delayUnit = TimeUnit.MILLISECONDS)
+    @Producer(type = MessageQueueType.ROCKETMQ,
+            cluster = "primary",
+            topic = "ai-test",
+            delayTime = 5000,
+            delayUnit = TimeUnit.MILLISECONDS)
     public MessageResult sendToRocketMQ(String message) {
         Message msg = new Message();
         msg.setPayload(message);

@@ -12,7 +12,8 @@ import org.springframework.stereotype.Component;
 public class ExampleConsumer {
 
     @MessageQueueListeners(value = {
-            @MessageQueueListener(type = MessageQueueType.ROCKETMQ, cluster = "primary", topic = "ai-test", group = "test-group"),
+            @MessageQueueListener(type = MessageQueueType.ROCKETMQ, cluster = "primary",
+                    topic = "ai-test", group = "test-group"),
             @MessageQueueListener(cluster = "primary", topic = "ai.test", group = "test")})
     public void onKafkaMessage(Message message) {
         log.info("id={}, body={}", message.getMessageId(), message.getPayload());
