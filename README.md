@@ -48,19 +48,22 @@
 ### Maven依赖
 
 ```xml
-<!-- 核心依赖 -->
-<dependency>
-    <groupId>com.example</groupId>
-    <artifactId>message-queue-spring-starter</artifactId>
-    <version>${latest.version}</version>
-</dependency>
 
-        <!-- 选择需要的实现 -->
-<dependency>
-<groupId>com.example</groupId>
-<artifactId>message-queue-kafka-impl</artifactId>
-<version>${latest.version}</version>
-</dependency>
+<dependencies>
+    <!-- 核心依赖 -->
+    <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>message-queue-spring-starter</artifactId>
+        <version>${latest.version}</version>
+    </dependency>
+
+    <!-- 选择需要的实现 -->
+    <dependency>
+        <groupId>com.example</groupId>
+        <artifactId>message-queue-kafka-impl</artifactId>
+        <version>${latest.version}</version>
+    </dependency>
+</dependencies>
 ```
 
 ### 基础配置
