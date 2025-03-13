@@ -1,0 +1,62 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: message-queue-examples
+
+message-queue:
+  enabled-types:
+    - KAFKA
+    - ROCKETMQ
+    - RABBITMQ
+    - PULSAR
+  default-cluster: primary
+  configurations:
+    KAFKA:
+      primary:
+        cluster: primary
+        type: KAFKA
+        server: 10.50.2.173:19091
+        properties:
+          group.id: test-group
+          auto.offset.reset: earliest
+      order: # 顺序队列配置
+        cluster: order
+        type: KAFKA
+        server: 10.50.2.173:19091
+        properties:
+          # 顺序：生产者配置
+          acks: all
+          max.in.flight.requests.per.connection: 1
+          enable.idempotence: true
+          partitioner.class: com.example.mq.kafka.producer.OrderIdPartitioner
+          # 顺序：消费者配置
+          max.poll.records: 1
+          enable.auto.commit: false
+          auto.offset.reset: earliest
+    ROCKETMQ:
+      primary:
+        cluster: primary
+        type: ROCKETMQ
+        server: 10.50.2.155:9876
+        properties:
+          producerGroup: test-group
+          sendMsgTimeout: 3000
+          brokerName: single-rocket-broker
+#    RABBITMQ:
+#      primary:
+#          cluster: primary
+#          type: RABBITMQ
+#          server: amqp://guest:guest@localhost:5672
+#          properties:
+#            virtualHost: /
+#            connectionTimeout: 60000
+#    PULSAR:
+#      primary:
+#          cluster: primary
+#          type: PULSAR
+#          server: pulsar://localhost:6650
+#          properties:
+#            operationTimeout: 30000
+#            connectionTimeout: 10000

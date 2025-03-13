@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.example</groupId>
+        <artifactId>message-queue</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>message-queue-rabbitmq-impl</artifactId>
+    <name>message-queue-rabbitmq-impl</name>
+    <description>RabbitMQ implementation for message queue</description>
+
+    <dependencies>
+        <!-- 消息队列核心模块 -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>message-queue-core</artifactId>
+        </dependency>
+
+        <!-- 消息队列支持模块 -->
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>message-queue-support</artifactId>
+        </dependency>
+
+        <!-- RabbitMQ客户端 -->
+        <dependency>
+            <groupId>com.rabbitmq</groupId>
+            <artifactId>amqp-client</artifactId>
+            <version>${amqp.client.version}</version>
+        </dependency>
+
+        <!-- Spring 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 工具类依赖 -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project> 
